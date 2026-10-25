@@ -1,0 +1,36 @@
+<view class="auth-page">
+  <view class="auth-brand">
+    <view class="auth-brand__title">收纳屋</view>
+    <view class="auth-brand__desc">一眼看清家里还有多少 · 纯本地</view>
+  </view>
+
+  <view class="field-group">
+    <view class="field">
+      <text class="field__label">账号</text>
+      <input
+        class="field__input"
+        placeholder="请输入账号"
+        value="{{username}}"
+        bindinput="onUsername"
+      />
+    </view>
+    <view class="field">
+      <text class="field__label">密码</text>
+      <input
+        class="field__input"
+        placeholder="请输入密码"
+        password="{{!showPassword}}"
+        value="{{password}}"
+        bindinput="onPassword"
+      />
+      <text class="eye" bindtap="togglePassword">{{showPassword ? '隐' : '显'}}</text>
+    </view>
+  </view>
+
+  <view class="auth-actions">
+    <button class="btn btn-primary btn-block" loading="{{loading}}" bindtap="onSubmit">
+      登录
+    </button>
+    <button class="btn btn-plain btn-block" bindtap="goRegister">注册账号</button>
+  </view>
+</view>

@@ -1,0 +1,56 @@
+{
+  "pages": [
+    "pages/home/home",
+    "pages/categories/categories",
+    "pages/alerts/alerts",
+    "pages/profile/profile",
+    "pages/login/login",
+    "pages/register/register",
+    "pages/item-detail/item-detail",
+    "pages/item-form/item-form",
+    "pages/locations/locations"
+  ],
+  "window": {
+    "navigationBarTitleText": "收纳屋",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f4f6fb",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#8b9199",
+    "selectedColor": "#15c5b0",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "首页",
+        "iconPath": "images/tab-blank.png",
+        "selectedIconPath": "images/tab-blank.png"
+      },
+      {
+        "pagePath": "pages/categories/categories",
+        "text": "分类",
+        "iconPath": "images/tab-blank.png",
+        "selectedIconPath": "images/tab-blank.png"
+      },
+      {
+        "pagePath": "pages/alerts/alerts",
+        "text": "提醒",
+        "iconPath": "images/tab-blank.png",
+        "selectedIconPath": "images/tab-blank.png"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的",
+        "iconPath": "images/tab-blank.png",
+        "selectedIconPath": "images/tab-blank.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,112 @@
+.loc-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8rpx;
+}
+
+.add-btn {
+  padding: 12rpx 24rpx;
+  border-radius: 999rpx;
+  background: #15c5b0;
+  color: #fff;
+  font-size: 26rpx;
+}
+
+.hint {
+  margin: 0 0 24rpx;
+  color: #8e8e93;
+  font-size: 26rpx;
+}
+
+.room-card {
+  margin-bottom: 20rpx;
+  border-radius: 24rpx;
+  overflow: hidden;
+  background: #fff;
+}
+
+.room-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 28rpx 32rpx;
+  font-weight: 600;
+}
+
+.room-body .cell {
+  border-top: 1rpx solid #f0f1f5;
+}
+
+.cell.danger .cell__title {
+  color: #ee0a24;
+}
+
+.sheet-mask,
+.dialog-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.45);
+}
+
+.sheet-mask {
+  display: flex;
+  align-items: flex-end;
+}
+
+.dialog-mask {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48rpx;
+}
+
+.sheet {
+  width: 100%;
+  max-height: 70vh;
+  overflow-y: auto;
+  background: #fff;
+  border-radius: 32rpx 32rpx 0 0;
+  padding-bottom: calc(24rpx + env(safe-area-inset-bottom));
+}
+
+.sheet__title {
+  padding: 32rpx;
+  font-weight: 700;
+  font-size: 32rpx;
+}
+
+.dialog {
+  width: 100%;
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.dialog__title {
+  text-align: center;
+  padding: 32rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.dialog__actions {
+  display: flex;
+  border-top: 1rpx solid #f0f1f5;
+  margin-top: 16rpx;
+}
+
+.dialog__btn {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.dialog__btn.primary {
+  color: #15c5b0;
+  font-weight: 600;
+  border-left: 1rpx solid #f0f1f5;
+}

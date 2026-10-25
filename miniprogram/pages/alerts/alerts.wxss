@@ -1,0 +1,5 @@
+.group-title {
+  margin: 24rpx 32rpx 16rpx;
+  font-size: 26rpx;
+  color: #8e8e93;
+}

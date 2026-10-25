@@ -1,0 +1,66 @@
+<view class="tabbar-root">
+<view class="boss-tabbar">
+  <view class="boss-tabbar__backdrop"></view>
+  <view class="boss-tabbar__shell">
+    <view
+      class="boss-tabbar__bubble {{bubblePop ? 'is-pop' : ''}}"
+      style="transform: translate3d({{bubbleX}}%, 0, 0);"
+    >
+      <view class="boss-tabbar__bubble-inner"></view>
+    </view>
+
+    <view
+      wx:for="{{list}}"
+      wx:key="text"
+      class="boss-tab {{selected === index && !item.center ? 'is-active' : ''}} {{item.center ? 'is-center' : ''}}"
+      data-path="{{item.pagePath}}"
+      data-index="{{index}}"
+      data-center="{{item.center}}"
+      bindtap="switchTab"
+    >
+      <view class="boss-tab__inner">
+        <view wx:if="{{item.center}}" class="boss-tab__plus">+</view>
+        <block wx:else>
+          <view class="boss-tab__icon boss-tab__icon--{{item.icon}}"></view>
+          <text class="boss-tab__text">{{item.text}}</text>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>
+
+<!-- 录入物品弹层 -->
+<view wx:if="{{showEntry}}" class="entry-mask" bindtap="closeEntry" catchtouchmove="noop">
+  <view class="entry-sheet" catchtap="noop">
+    <view class="entry-sheet__title">录入物品</view>
+
+    <view class="entry-tabs">
+      <view
+        class="entry-tabs__item {{entryMode === 'standard' ? 'is-on' : ''}}"
+        data-mode="standard"
+        bindtap="switchEntryMode"
+      >标准录入</view>
+      <view
+        class="entry-tabs__item {{entryMode === 'ai' ? 'is-on' : ''}}"
+        data-mode="ai"
+        bindtap="switchEntryMode"
+      >AI录入</view>
+    </view>
+
+    <view class="entry-list">
+      <view
+        wx:for="{{entryActions}}"
+        wx:key="key"
+        class="entry-item"
+        data-key="{{item.key}}"
+        bindtap="onEntryAction"
+      >
+        <view class="entry-item__icon" style="background: {{item.bg}};">
+          <view class="entry-item__glyph entry-item__glyph--{{item.icon}}"></view>
+        </view>
+        <text class="entry-item__text">{{item.text}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+</view>

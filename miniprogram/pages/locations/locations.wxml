@@ -1,0 +1,83 @@
+<view class="page">
+  <view class="loc-header">
+    <view class="page-title" style="margin-bottom:0">位置</view>
+    <view class="add-btn" bindtap="openAdd">新增</view>
+  </view>
+  <view class="hint">房间 → 柜子 / 冰箱 / 抽屉</view>
+
+  <view wx:if="{{!tree.length}}" class="empty">还没有位置，先新增一个房间吧</view>
+
+  <view wx:for="{{tree}}" wx:key="id" class="room-card">
+    <view class="room-head" data-id="{{item.id}}" bindtap="toggle">
+      <text class="room-name">{{item.name}}（{{item.itemCount || 0}}）</text>
+      <text class="room-arrow">{{expanded[item.id] ? '▾' : '▸'}}</text>
+    </view>
+    <view wx:if="{{expanded[item.id]}}" class="room-body">
+      <view
+        class="cell cell--link"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+        bindtap="openLocation"
+      >
+        <text class="cell__title">查看此位置物品</text>
+      </view>
+      <view
+        wx:for="{{item.children}}"
+        wx:for-item="child"
+        wx:key="id"
+        class="cell cell--link"
+        data-id="{{child.id}}"
+        data-name="{{child.name}}"
+        bindtap="openLocation"
+      >
+        <text class="cell__title">{{child.name}}</text>
+        <text class="cell__value">{{child.itemCount || 0}} 件</text>
+      </view>
+      <view
+        class="cell danger"
+        data-id="{{item.id}}"
+        data-name="{{item.name}}"
+        bindtap="removeLocation"
+      >
+        <text class="cell__title">删除此房间</text>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showItems}}" class="sheet-mask" bindtap="closeItems">
+    <view class="sheet" catchtap="">
+      <view class="sheet__title">{{selectedName}} 的物品</view>
+      <view
+        wx:for="{{locationItems}}"
+        wx:key="id"
+        class="cell cell--link"
+        data-id="{{item.id}}"
+        bindtap="openItem"
+      >
+        <text class="cell__title">{{item.name}}</text>
+        <text class="cell__value">{{item.qtyText}}</text>
+      </view>
+      <view wx:if="{{!locationItems.length}}" class="empty" style="padding:40rpx">此处暂无物品</view>
+    </view>
+  </view>
+
+  <view wx:if="{{showAdd}}" class="dialog-mask" bindtap="closeAdd">
+    <view class="dialog" catchtap="">
+      <view class="dialog__title">新增位置</view>
+      <view class="field" style="margin:0;border-radius:0;border-bottom:1rpx solid #f0f1f5">
+        <text class="field__label">名称</text>
+        <input class="field__input" placeholder="如：主卧 / 衣柜上层" value="{{name}}" bindinput="onName" />
+      </view>
+      <picker mode="selector" range="{{parentRange}}" bindchange="onParentChange">
+        <view class="field field--link" style="margin:0;border-radius:0">
+          <text class="field__label">上级</text>
+          <text class="field__value">{{parentName}}</text>
+        </view>
+      </picker>
+      <view class="dialog__actions">
+        <view class="dialog__btn" bindtap="closeAdd">取消</view>
+        <view class="dialog__btn primary" bindtap="confirmAdd">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,87 @@
+<view class="page categories-page">
+  <view class="cat-header">
+    <view class="page-title" style="margin-bottom:0">分类</view>
+    <view class="add-btn" bindtap="openAdd">新增分类</view>
+  </view>
+
+  <view class="cat-chips">
+    <view class="cat-chip {{!activeId ? 'active' : ''}}" bindtap="selectAll">
+      全部
+      <text class="count">{{items.length}}</text>
+    </view>
+    <view
+      wx:for="{{categories}}"
+      wx:key="id"
+      class="cat-chip {{activeId === item.id ? 'active' : ''}}"
+      style="border-color: {{activeId === item.id ? item.color : ''}}; color: {{activeId === item.id ? item.color : ''}};"
+      data-id="{{item.id}}"
+      data-name="{{item.name}}"
+      bindtap="selectCat"
+      bindlongpress="longPressCat"
+    >
+      <view class="dot" style="background: {{item.color}}" />
+      {{item.name}}
+      <text class="count">{{item.count}}</text>
+    </view>
+  </view>
+
+  <view class="section-head" style="padding-left:0;padding-right:0">
+    <text class="h2">{{activeName}}</text>
+    <text class="section-sub">{{filtered.length}} 件</text>
+  </view>
+
+  <view wx:if="{{!filtered.length}}" class="empty">该分类暂无物品</view>
+  <view wx:else class="item-list" style="padding:0">
+    <view
+      wx:for="{{filtered}}"
+      wx:key="id"
+      class="list-card"
+      data-id="{{item.id}}"
+      bindtap="openItem"
+    >
+      <view class="list-card__cover" style="background: {{item.coverUrl ? '#ddd' : item.categoryColor}}">
+        <image wx:if="{{item.coverUrl}}" src="{{item.coverUrl}}" mode="aspectFill" />
+        <text class="cover-tag">{{item.categoryName}}</text>
+      </view>
+      <view class="list-card__main">
+        <view class="list-card__title-row">
+          <text class="list-card__title">{{item.name}}</text>
+        </view>
+        <view wx:if="{{item.spec}}" class="spec-pill">{{item.spec}}</view>
+        <view class="list-card__foot">
+          <text class="sold">存量 {{item.qtyText}}{{item.unit}}</text>
+          <text wx:if="{{item.priceText}}" class="price">¥{{item.priceText}}</text>
+          <text wx:else class="price muted">暂无标价</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view wx:if="{{showAdd}}" class="dialog-mask" bindtap="closeAdd">
+    <view class="dialog" catchtap="">
+      <view class="dialog__title">新增分类</view>
+      <view class="field" style="margin:0;border-radius:0;border-bottom:1rpx solid #f0f1f5">
+        <text class="field__label">名称</text>
+        <input class="field__input" placeholder="如：母婴 / 衣物" value="{{catName}}" bindinput="onCatName" />
+      </view>
+      <view class="field" style="margin:0;border-radius:0">
+        <text class="field__label">颜色</text>
+        <input class="field__input" placeholder="#2f6bff" value="{{catColor}}" bindinput="onCatColor" />
+      </view>
+      <view class="color-presets">
+        <view
+          wx:for="{{['#2f6bff','#7CB342','#EF5350','#AB47BC','#26A69A','#FFA726']}}"
+          wx:key="*this"
+          class="color-dot"
+          style="background: {{item}}"
+          data-color="{{item}}"
+          bindtap="pickPreset"
+        />
+      </view>
+      <view class="dialog__actions">
+        <view class="dialog__btn" bindtap="closeAdd">取消</view>
+        <view class="dialog__btn primary" bindtap="confirmAdd">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

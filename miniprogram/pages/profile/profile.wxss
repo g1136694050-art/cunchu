@@ -1,0 +1,82 @@
+.block-head {
+  margin: 32rpx 32rpx 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.block-title {
+  font-weight: 600;
+  font-size: 30rpx;
+}
+
+.mini-btn {
+  padding: 8rpx 20rpx;
+  border-radius: 999rpx;
+  background: #15c5b0;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.color-swatch {
+  width: 36rpx;
+  height: 36rpx;
+  border-radius: 12rpx;
+}
+
+.dialog-mask {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 48rpx;
+}
+
+.dialog {
+  width: 100%;
+  background: #fff;
+  border-radius: 24rpx;
+  overflow: hidden;
+}
+
+.dialog__title {
+  text-align: center;
+  padding: 32rpx;
+  font-size: 34rpx;
+  font-weight: 600;
+}
+
+.color-presets {
+  display: flex;
+  gap: 16rpx;
+  padding: 16rpx 32rpx 8rpx;
+}
+
+.color-dot {
+  width: 48rpx;
+  height: 48rpx;
+  border-radius: 12rpx;
+}
+
+.dialog__actions {
+  display: flex;
+  border-top: 1rpx solid #f0f1f5;
+  margin-top: 16rpx;
+}
+
+.dialog__btn {
+  flex: 1;
+  text-align: center;
+  padding: 28rpx;
+  font-size: 32rpx;
+  color: #666;
+}
+
+.dialog__btn.primary {
+  color: #15c5b0;
+  font-weight: 600;
+  border-left: 1rpx solid #f0f1f5;
+}

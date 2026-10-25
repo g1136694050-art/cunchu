@@ -1,0 +1,65 @@
+<view class="page form-page">
+  <view class="cover-box" bindtap="chooseCover">
+    <image wx:if="{{coverPreview}}" class="cover-img" src="{{coverPreview}}" mode="aspectFill" />
+    <text wx:else class="cover-placeholder">拍照 / 相册</text>
+  </view>
+
+  <view class="field-group">
+    <view class="field">
+      <text class="field__label required">名称</text>
+      <input class="field__input" placeholder="如 NB 纸尿裤" data-key="name" value="{{form.name}}" bindinput="setField" />
+    </view>
+    <picker mode="selector" range="{{catRange}}" bindchange="onCatChange">
+      <view class="field field--link">
+        <text class="field__label required">分类</text>
+        <text class="field__value {{form.categoryName ? '' : 'field__placeholder'}}">
+          {{form.categoryName || '选择分类'}}
+        </text>
+      </view>
+    </picker>
+    <view class="field">
+      <text class="field__label required">数量</text>
+      <input class="field__input" type="digit" data-key="quantity" value="{{form.quantity}}" bindinput="setField" />
+    </view>
+    <view class="field">
+      <text class="field__label">单位</text>
+      <input class="field__input" placeholder="个 / 包 / 件" data-key="unit" value="{{form.unit}}" bindinput="setField" />
+    </view>
+    <view class="field">
+      <text class="field__label">价格</text>
+      <input class="field__input" type="digit" placeholder="单价，可选" data-key="price" value="{{form.price}}" bindinput="setField" />
+    </view>
+    <picker mode="selector" range="{{locRange}}" bindchange="onLocChange">
+      <view class="field field--link">
+        <text class="field__label">位置</text>
+        <text class="field__value {{form.locationName ? '' : 'field__placeholder'}}">
+          {{form.locationName || '家里放哪'}}
+        </text>
+      </view>
+    </picker>
+    <picker mode="date" value="{{form.expireAt}}" bindchange="onExpireChange">
+      <view class="field field--link">
+        <text class="field__label">保质期</text>
+        <text class="field__value {{form.expireAt ? '' : 'field__placeholder'}}">
+          {{form.expireAt || '可选'}}
+        </text>
+      </view>
+    </picker>
+    <view class="field">
+      <text class="field__label">低库存</text>
+      <input class="field__input" type="digit" placeholder="低于此值提醒" data-key="lowStockThreshold" value="{{form.lowStockThreshold}}" bindinput="setField" />
+    </view>
+    <view class="field">
+      <text class="field__label">规格</text>
+      <input class="field__input" placeholder="尺码/规格，可选" data-key="spec" value="{{form.spec}}" bindinput="setField" />
+    </view>
+    <view class="field field--area">
+      <text class="field__label">备注</text>
+      <textarea class="field__textarea" placeholder="可选" data-key="remark" value="{{form.remark}}" bindinput="setField" />
+    </view>
+  </view>
+
+  <view style="margin:48rpx 32rpx">
+    <button class="btn btn-primary btn-block" loading="{{loading}}" bindtap="onSubmit">保存</button>
+  </view>
+</view>

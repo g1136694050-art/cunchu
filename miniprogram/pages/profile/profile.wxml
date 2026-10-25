@@ -1,0 +1,67 @@
+<view class="page">
+  <view class="page-title">我的</view>
+
+  <view class="card-group">
+    <view class="cell">
+      <text class="cell__title">昵称</text>
+      <text class="cell__value">{{displayName}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">账号</text>
+      <text class="cell__value">{{username}}</text>
+    </view>
+  </view>
+
+  <view class="block-head">
+    <text class="block-title">分类色板</text>
+    <view class="mini-btn" bindtap="openAdd">新增</view>
+  </view>
+  <view class="card-group">
+    <view wx:for="{{categories}}" wx:key="id" class="cell">
+      <text class="cell__title">{{item.name}}</text>
+      <view class="color-swatch" style="background: {{item.color}}" />
+    </view>
+    <view wx:if="{{!categories.length}}" class="empty" style="padding:40rpx">暂无分类</view>
+  </view>
+
+  <view class="card-group" style="margin-top:32rpx">
+    <view class="cell cell--link" bindtap="goLocations">
+      <view>
+        <view class="cell__title">位置管理</view>
+        <view class="cell__label">房间 / 柜子存放位置</view>
+      </view>
+    </view>
+  </view>
+
+  <view style="margin:48rpx 32rpx">
+    <button class="btn btn-danger-plain btn-block" bindtap="logout">退出登录</button>
+  </view>
+
+  <view wx:if="{{showAdd}}" class="dialog-mask" bindtap="closeAdd">
+    <view class="dialog" catchtap="">
+      <view class="dialog__title">新增分类</view>
+      <view class="field" style="margin:0;border-radius:0;border-bottom:1rpx solid #f0f1f5">
+        <text class="field__label">名称</text>
+        <input class="field__input" placeholder="分类名" value="{{catName}}" bindinput="onCatName" />
+      </view>
+      <view class="field" style="margin:0;border-radius:0">
+        <text class="field__label">颜色</text>
+        <input class="field__input" placeholder="#7CB342" value="{{catColor}}" bindinput="onCatColor" />
+      </view>
+      <view class="color-presets">
+        <view
+          wx:for="{{['#7CB342','#2f6bff','#EF5350','#AB47BC','#26A69A','#FFA726']}}"
+          wx:key="*this"
+          class="color-dot"
+          style="background: {{item}}"
+          data-color="{{item}}"
+          bindtap="pickPreset"
+        />
+      </view>
+      <view class="dialog__actions">
+        <view class="dialog__btn" bindtap="closeAdd">取消</view>
+        <view class="dialog__btn primary" bindtap="confirmAdd">确定</view>
+      </view>
+    </view>
+  </view>
+</view>

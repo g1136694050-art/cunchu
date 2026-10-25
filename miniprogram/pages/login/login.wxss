@@ -1,0 +1,40 @@
+.auth-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64rpx 48rpx;
+  box-sizing: border-box;
+  background:
+    radial-gradient(circle at top right, rgba(124, 179, 66, 0.18), transparent 40%),
+    radial-gradient(circle at bottom left, rgba(21, 101, 192, 0.14), transparent 42%),
+    #f4f6fb;
+}
+
+.auth-brand {
+  margin-bottom: 56rpx;
+}
+
+.auth-brand__title {
+  font-size: 68rpx;
+  font-weight: 800;
+  margin-bottom: 16rpx;
+}
+
+.auth-brand__desc {
+  color: #8e8e93;
+  font-size: 28rpx;
+}
+
+.auth-actions {
+  margin-top: 48rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.eye {
+  font-size: 24rpx;
+  color: #15c5b0;
+  padding: 8rpx 12rpx;
+}

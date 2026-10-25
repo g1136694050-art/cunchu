@@ -1,0 +1,35 @@
+<view class="auth-page">
+  <view class="auth-brand">
+    <view class="auth-brand__title">创建收纳屋</view>
+    <view class="auth-brand__desc">账号密码登录，数据保存在本机</view>
+  </view>
+
+  <view class="field-group">
+    <view class="field">
+      <text class="field__label">账号</text>
+      <input class="field__input" placeholder="至少 3 位" value="{{username}}" bindinput="onUsername" />
+    </view>
+    <view class="field">
+      <text class="field__label">昵称</text>
+      <input class="field__input" placeholder="可选" value="{{nickname}}" bindinput="onNickname" />
+    </view>
+    <view class="field">
+      <text class="field__label">密码</text>
+      <input
+        class="field__input"
+        placeholder="至少 3 位"
+        password="{{!showPassword}}"
+        value="{{password}}"
+        bindinput="onPassword"
+      />
+      <text class="eye" bindtap="togglePassword">{{showPassword ? '隐' : '显'}}</text>
+    </view>
+  </view>
+
+  <view class="auth-actions">
+    <button class="btn btn-primary btn-block" loading="{{loading}}" bindtap="onSubmit">
+      注册并登录
+    </button>
+    <button class="btn btn-plain btn-block" bindtap="goLogin">已有账号</button>
+  </view>
+</view>

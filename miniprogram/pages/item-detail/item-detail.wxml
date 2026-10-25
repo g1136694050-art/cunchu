@@ -1,0 +1,64 @@
+<view class="page detail-page" wx:if="{{item}}">
+  <view class="hero" style="background: {{item.categoryColor}}">
+    <image wx:if="{{item.coverUrl}}" class="hero__bg" src="{{item.coverUrl}}" mode="aspectFill" />
+    <view class="hero__content">
+      <view class="hero__name">{{item.name}}</view>
+      <view class="hero__qty">
+        {{item.qtyText}}
+        <text class="hero__unit">{{item.unit}}</text>
+      </view>
+      <view class="hero__actions">
+        <button class="qty-btn" size="mini" data-delta="-1" bindtap="changeQty">-1</button>
+        <button class="qty-btn primary" size="mini" data-delta="1" bindtap="changeQty">+1</button>
+        <button class="qty-btn" size="mini" bindtap="goEdit">编辑</button>
+      </view>
+    </view>
+  </view>
+
+  <view class="card-group">
+    <view class="cell">
+      <text class="cell__title">分类</text>
+      <text class="cell__value">{{item.categoryName}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">位置</text>
+      <text class="cell__value">{{item.locationName}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">价格</text>
+      <text class="cell__value">{{item.priceText ? '¥' + item.priceText : '未标价'}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">保质期</text>
+      <text class="cell__value">{{item.expireText}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">低库存阈值</text>
+      <text class="cell__value">{{item.lowStockText}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">规格</text>
+      <text class="cell__value">{{item.spec || '-'}}</text>
+    </view>
+    <view class="cell">
+      <text class="cell__title">备注</text>
+      <text class="cell__value">{{item.remark || '-'}}</text>
+    </view>
+  </view>
+
+  <view class="logs-title">出入库记录</view>
+  <view class="card-group">
+    <view wx:for="{{logs}}" wx:key="id" class="cell">
+      <view>
+        <view class="cell__title">{{item.title}}</view>
+        <view class="cell__label">{{item.label}}</view>
+      </view>
+      <text class="cell__value">{{item.time}}</text>
+    </view>
+    <view wx:if="{{!logs.length}}" class="empty" style="padding:40rpx">暂无记录</view>
+  </view>
+
+  <view style="margin:48rpx 32rpx">
+    <button class="btn btn-danger-plain btn-block" bindtap="removeItem">删除物品</button>
+  </view>
+</view>

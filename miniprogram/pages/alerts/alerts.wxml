@@ -1,0 +1,57 @@
+<view class="page">
+  <view class="page-title">提醒</view>
+
+  <view class="group-title">临期（7天内）</view>
+  <view class="card-group">
+    <view
+      wx:for="{{expiringSoon}}"
+      wx:key="id"
+      class="cell cell--link"
+      data-id="{{item.id}}"
+      bindtap="openItem"
+    >
+      <view>
+        <view class="cell__title">{{item.name}}</view>
+        <view class="cell__label">{{item.expireText}}</view>
+      </view>
+      <text class="cell__value">{{item.qtyText}}</text>
+    </view>
+    <view wx:if="{{!expiringSoon.length}}" class="empty" style="padding:40rpx">暂无临期</view>
+  </view>
+
+  <view class="group-title">已过期</view>
+  <view class="card-group">
+    <view
+      wx:for="{{expired}}"
+      wx:key="id"
+      class="cell cell--link"
+      data-id="{{item.id}}"
+      bindtap="openItem"
+    >
+      <view>
+        <view class="cell__title">{{item.name}}</view>
+        <view class="cell__label">{{item.expireText}}</view>
+      </view>
+      <text class="cell__value">{{item.qtyText}}</text>
+    </view>
+    <view wx:if="{{!expired.length}}" class="empty" style="padding:40rpx">暂无过期</view>
+  </view>
+
+  <view class="group-title">低库存</view>
+  <view class="card-group">
+    <view
+      wx:for="{{lowStock}}"
+      wx:key="id"
+      class="cell cell--link"
+      data-id="{{item.id}}"
+      bindtap="openItem"
+    >
+      <view>
+        <view class="cell__title">{{item.name}}</view>
+        <view class="cell__label">{{item.label}}</view>
+      </view>
+      <text class="cell__value">{{item.qtyText}}</text>
+    </view>
+    <view wx:if="{{!lowStock.length}}" class="empty" style="padding:40rpx">库存充足</view>
+  </view>
+</view>
